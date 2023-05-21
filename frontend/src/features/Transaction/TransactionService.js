@@ -41,10 +41,10 @@ const deleteGoal = async (goalId, token) => {
   return response.data
 }
 
-const goalService = {
+const TransactionService = {
   createGoal,
   getGoals,
   deleteGoal,
 }
 
-export default goalService
+export default TransactionService

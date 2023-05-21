@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createGoal } from '../features/goals/goalSlice'
+import { createGoal } from '../features/Transaction/TransactionSlice'
 
-function GoalForm() {
+function TransactionForm() {
   const [text, setText] = useState('')
 
   const dispatch = useDispatch()
@@ -18,18 +18,21 @@ function GoalForm() {
     <section className='form'>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label htmlFor='text'>Goal</label>
+          <label htmlFor='text'>Transaction Form</label>
           <input
             type='text'
             name='text'
             id='text'
             value={text}
             onChange={(e) => setText(e.target.value)}
+            placeholder="Add Amount"
           />
+          
         </div>
         <div className='form-group'>
           <button className='btn btn-block' type='submit'>
-            Add Goal
+            Add Transaction
+
           </button>
         </div>
       </form>
@@ -37,4 +40,4 @@ function GoalForm() {
   )
 }
 
-export default GoalForm
+export default TransactionForm

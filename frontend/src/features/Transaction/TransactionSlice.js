@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import goalService from './goalService'
+import TransactionService from './TransactionService'
 
 const initialState = {
   goals: [],
@@ -15,7 +15,7 @@ export const createGoal = createAsyncThunk(
   async (goalData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.createGoal(goalData, token)
+      return await TransactionService.createGoal(goalData, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -28,13 +28,13 @@ export const createGoal = createAsyncThunk(
   }
 )
 
-// Get user goals
+// Get user Transaction
 export const getGoals = createAsyncThunk(
   'goals/getAll',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.getGoals(token)
+      return await TransactionService.getGoals(token)
     } catch (error) {
       const message =
         (error.response &&
@@ -47,13 +47,13 @@ export const getGoals = createAsyncThunk(
   }
 )
 
-// Delete user goal
+// Delete user Transaction
 export const deleteGoal = createAsyncThunk(
-  'goals/delete',
+  'Transaction/delete',
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.deleteGoal(id, token)
+      return await TransactionService.deleteGoal(id, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -66,7 +66,7 @@ export const deleteGoal = createAsyncThunk(
   }
 )
 
-export const goalSlice = createSlice({
+export const TransactionSlice = createSlice({
   name: 'goal',
   initialState,
   reducers: {
@@ -118,5 +118,5 @@ export const goalSlice = createSlice({
   },
 })
 
-export const { reset } = goalSlice.actions
-export default goalSlice.reducer
+export const { reset } = TransactionSlice.actions
+export default TransactionSlice.reducer
